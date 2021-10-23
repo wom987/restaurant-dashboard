@@ -84,22 +84,9 @@
             messagingSenderId: "64781286413",
             appId: "1:64781286413:web:7a5750edf85b65ace76944"
         };
-        firebase.initializeApp(config);
-        var facebookProvider = new firebase.auth.FacebookAuthProvider();
-        var googleProvider = new firebase.auth.GoogleAuthProvider();
-        var facebookCallbackLink = '/login/facebook/callback';
-        var googleCallbackLink = '/login/google/callback';
+        firebase.initializeApp(firebaseConfig);
         async function socialSignin(provider) {
             var socialProvider = null;
-            if (provider == "facebook") {
-                socialProvider = facebookProvider;
-                document.getElementById('social-login-form').action = facebookCallbackLink;
-            } else if (provider == "google") {
-                socialProvider = googleProvider;
-                document.getElementById('social-login-form').action = googleCallbackLink;
-            } else {
-                return;
-            }
             firebase.auth().signInWithPopup(socialProvider).then(function(result) {
                 result.user.getIdToken().then(function(result) {
                     document.getElementById('social-login-tokenId').value = result;

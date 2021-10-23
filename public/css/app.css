@@ -32221,6 +32221,10 @@ video {
   content: none;
 }
 
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
